@@ -2,40 +2,46 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday Iyad 💖</title>
+<title>Happy Birthday Iyad 🕷️❤️</title>
 
 <style>
 body {
     margin: 0;
     text-align: center;
     font-family: 'Comic Sans MS', cursive;
-    background: linear-gradient(45deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
-    background-size: 400% 400%;
-    animation: gradientBG 10s ease infinite;
+    background: linear-gradient(45deg, #0f2027, #203a43, #2c5364);
     color: white;
+    overflow-x: hidden;
 }
 
-@keyframes gradientBG {
-    0% {background-position: 0% 50%;}
-    50% {background-position: 100% 50%;}
-    100% {background-position: 0% 50%;}
+/* Spider theme glow */
+h1 {
+    color: red;
+    text-shadow: 0 0 10px red, 0 0 20px crimson;
 }
 
 .container {
     padding: 30px;
 }
 
+/* Buttons */
 button {
     padding: 12px 20px;
     font-size: 18px;
     border: none;
     border-radius: 20px;
-    background: white;
-    color: hotpink;
+    background: red;
+    color: white;
     cursor: pointer;
     margin-top: 15px;
+    box-shadow: 0 0 10px red;
 }
 
+button:hover {
+    transform: scale(1.05);
+}
+
+/* Input */
 input {
     padding: 10px;
     border-radius: 10px;
@@ -43,21 +49,29 @@ input {
     text-align: center;
 }
 
+/* Hide main */
 #mainContent {
     display: none;
 }
 
-#kisses {
+/* Spider webs animation */
+.web {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    pointer-events: none;
+    width: 50px;
+    top: -50px;
+    animation: fall 6s linear infinite;
 }
 
-.kiss {
+@keyframes fall {
+    to {
+        transform: translateY(110vh);
+    }
+}
+
+/* Hearts */
+.heart {
     position: absolute;
-    font-size: 25px;
+    font-size: 20px;
     animation: floatUp 3s linear forwards;
 }
 
@@ -66,93 +80,100 @@ input {
     100% {transform: translateY(-200px); opacity: 0;}
 }
 
+/* Image */
 img {
     width: 250px;
     border-radius: 20px;
     margin-top: 20px;
-    box-shadow: 0 0 20px white;
+    box-shadow: 0 0 20px red;
 }
 </style>
 </head>
 
 <body>
 
+<!-- LOGIN -->
 <div class="container" id="login">
-    <h2>🕷️ Private For Iyad Only 🕷️</h2>
+    <h2>🕷️ Private For My Spider-Man 🕷️</h2>
     <p>Enter your birthday to unlock 💌</p>
     <input type="password" id="password" placeholder="DDMMYYYY">
     <br>
-    <button onclick="checkPassword()">Unlock 💖</button>
+    <button onclick="checkPassword()">Unlock ❤️</button>
 </div>
 
+<!-- MAIN -->
 <div class="container" id="mainContent">
 
-    <h1>Happy Birthday Iyad 🎂💋</h1>
-    <p>You’re my favourite Spiderman 🕷️</p>
+    <h1>Happy Birthday Iyad 🕷️❤️</h1>
+    <p>You’re my one and only Spider-Man 🕸️</p>
 
-    <button onclick="showSurprise()">Tap Me Sayang 😚</button>
+    <button onclick="showSurprise()">Click Me Sayang 😚</button>
 
     <div id="surprise" style="display:none;">
         <p>
-        Thank you sebab jadi hero I 🕸️<br>
-        Walaupun kadang-kadang annoying 🙄<br><br>
-        I love you more than your PlayStation 😤💘<br>
-        Stay handsome and stay mine okay 💖
+        Thank you sebab jadi hero I 🕷️<br>
+        Selalu jaga I walaupun degil 😤<br><br>
+        I love you more than everything 💖<br>
+        Stay mine forever okay? 🥺❤️
         </p>
 
         <img src="us.jpg" alt="Us">
 
         <br>
 
-        <button onclick="playMusic()">Play Our Songs 🎵</button>
+        <button onclick="playMusic()">Play Our Song 🎵</button>
 
         <div id="music" style="display:none; margin-top:20px;">
             <iframe width="300" height="170"
-            src="https://www.youtube.com/embed?listType=search&list=Kidsteph+Frankenstein+Goatt"
-            frameborder="0" allow="autoplay"></iframe>
-
-            <br><br>
-
-            <iframe width="300" height="170"
-            src="https://www.youtube.com/embed?listType=search&list=Indahkus+Malu+Malu"
+            src="https://www.youtube.com/embed?listType=search&list=romantic+love+song"
             frameborder="0" allow="autoplay"></iframe>
         </div>
     </div>
 </div>
 
-<div id="kisses"></div>
-
 <script>
-const correctPassword = "12042005"; // contoh: 12082003
+const correctPassword = "12042005";
 
 function checkPassword() {
     const input = document.getElementById("password").value;
     if(input === correctPassword) {
         document.getElementById("login").style.display = "none";
         document.getElementById("mainContent").style.display = "block";
+        createWebs();
     } else {
-        alert("Wrong password sayang 😤 Try again.");
+        alert("Wrong password 😤 try again!");
     }
 }
 
 function showSurprise() {
     document.getElementById("surprise").style.display = "block";
-    createKisses();
+    createHearts();
 }
 
-function createKisses() {
+function createHearts() {
     for(let i=0; i<15; i++) {
-        let kiss = document.createElement("div");
-        kiss.className = "kiss";
-        kiss.innerHTML = "💋";
-        kiss.style.left = Math.random() * 100 + "%";
-        kiss.style.top = "80%";
-        document.getElementById("kisses").appendChild(kiss);
+        let heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * 100 + "%";
+        heart.style.top = "80%";
+        document.body.appendChild(heart);
 
-        setTimeout(() => {
-            kiss.remove();
-        }, 3000);
+        setTimeout(() => heart.remove(), 3000);
     }
+}
+
+/* Spider webs falling */
+function createWebs() {
+    setInterval(() => {
+        let web = document.createElement("div");
+        web.className = "web";
+        web.innerHTML = "🕸️";
+        web.style.left = Math.random() * 100 + "%";
+        document.body.appendChild(web);
+
+        setTimeout(() => web.remove(), 6000);
+    }, 500);
 }
 
 function playMusic() {
