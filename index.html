@@ -111,14 +111,24 @@ body {
 .page {
     position: absolute;
     width: 100%;
-    padding: 30px 20px;
+    top: 0;
+    left: 0;
+
+    padding: 80px 20px 30px; /* top besar sikit */
     box-sizing: border-box;
 
     opacity: 0;
     transform: translateY(20px);
     transition: 0.4s ease;
 
-    pointer-events: none; /* 🔥 IMPORTANT */
+    pointer-events: none;
+}
+
+.page.active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
 }
 
 .page.active {
@@ -255,6 +265,24 @@ input {
     margin-top: 20px;
 }
 
+.video-box {
+    margin-top: 20px;
+}
+
+.video-title {
+    text-align: left;
+    font-size: 13px;
+    opacity: 0.7;
+    margin-bottom: 5px;
+}
+
+iframe {
+    width: 100%;
+    height: 180px;
+    border-radius: 15px;
+    border: none;
+}
+    
 </style>
 </head>
 
@@ -278,7 +306,6 @@ input {
 
 <!-- HOME -->
 <div id="home" class="page">
-<button class="btn" onclick="document.getElementById('bgMusic').pause()">Pause Music</button>
 <div class="spiderman one">🕷️</div>
 <div class="spiderman two">🕸️</div>
 
@@ -297,7 +324,8 @@ input {
 </div>
 
 <div class="footer">by fificute 💖</div>
-
+<button class="btn" onclick="toggleMusic()">Pause / Play Music</button>
+</div>
 </div>
 </div>
 </div>
@@ -336,18 +364,25 @@ input {
 <!-- SONG -->
 <div id="song" class="page">
 <div class="card">
+
 <h1>This is for you</h1>
 
-<iframe width="100%" height="200"
-src="https://www.youtube.com/watch?v=lY5V4hSLWY8&list=RDlY5V4hSLWY8&start_radio=1">
-</iframe>
-<iframe width="100%" height="200"
-src="https://www.youtube.com/watch?v=LMIS2PMqCL0&list=RDLMIS2PMqCL0&start_radio=1">
-</iframe>
-<div class="footer">by fificute 💖</div>
+<div class="video-box">
+<p class="video-title">our song 💖</p>
+<iframe src="https://www.youtube.com/embed/lY5V4hSLWY8&list=RDlY5V4hSLWY8&start_radio=1"></iframe>
+</div>
+
+<div class="video-box">
+<p class="video-title">another memory 🎵</p>
+<iframe src="https://www.youtube.com/embed/LMIS2PMqCL0&list=RDLMIS2PMqCL0&start_radio=1"></iframe>
+</div>
+
 <div class="back" onclick="go('home')">← back</div>
+<div class="footer">by fificute 💖</div>
+
 </div>
 </div>
+
 
 <!-- GIFT -->
 <div id="gift" class="page">
@@ -401,9 +436,14 @@ document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
 document.getElementById(id).classList.add('active');
 }
 
-function playMusic(){
-    let music = document.getElementById("bgMusic");
-    music.play().catch(()=>{});
+function toggleMusic(){
+let m = document.getElementById("bgMusic");
+
+if(m.paused){
+    m.play();
+}else{
+    m.pause();
+}
 }
 </script>
 
