@@ -88,6 +88,51 @@ button:hover {
     color: #ffd6dc;
     opacity: 0.8;
 }
+    /* PAGE SYSTEM */
+.page {
+    display: none;
+}
+
+/* HOME CARD */
+.home-card {
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(20px);
+    padding: 30px;
+    border-radius: 25px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+    text-align: center;
+    width: 320px;
+    margin: auto;
+}
+
+/* GRID MENU */
+.menu {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+/* BUTTON CARD */
+.card-btn {
+    background: linear-gradient(145deg, #8b0000, #ff1e4d);
+    border-radius: 20px;
+    padding: 20px;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+}
+
+.card-btn:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 20px #ff4d6d;
+}
+
+.card-btn p {
+    margin-top: 8px;
+    font-size: 14px;
+}
 
 </style>
 </head>
@@ -107,12 +152,54 @@ button:hover {
     </div>
 </div>
 
+    <!-- HOME PAGE -->
+<div id="homePage" class="page">
+
+    <div class="home-card">
+        <h1>Special For You 💖</h1>
+
+        <div class="menu">
+
+            <div class="card-btn" onclick="goPage('galleryPage')">
+                🕷️
+                <p>Gallery</p>
+            </div>
+
+            <div class="card-btn" onclick="goPage('songPage')">
+                🎵
+                <p>Song</p>
+            </div>
+
+            <div class="card-btn" onclick="goPage('giftPage')">
+                🎁
+                <p>Gift</p>
+            </div>
+
+            <div class="card-btn" onclick="goPage('secretPage')">
+                💌
+                <p>Secret</p>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
 <script>
+function goPage(pageId) {
+    document.querySelectorAll('.page').forEach(p => p.style.display = 'none');
+    document.getElementById(pageId).style.display = 'block';
+}
+
 function checkPassword() {
     let pass = document.getElementById("password").value;
 
-    if(pass === "1204") {
+    if(pass === "1234") {
         alert("Welcome baby 💖");
+
+        document.querySelector(".container").style.display = "none";
+        document.getElementById("homePage").style.display = "block";
+
     } else {
         alert("Wrong password 😭");
     }
