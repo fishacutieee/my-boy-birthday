@@ -14,18 +14,33 @@ body {
     justify-content: center;
     align-items: center;
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+    background: linear-gradient(135deg, #3b0a0a, #800020);
+    overflow: hidden;
 }
+
+/* FLOATING GLOW DECOR */
+.glow {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: rgba(255, 100, 120, 0.3);
+    border-radius: 50%;
+    filter: blur(80px);
+}
+
+.glow1 { top: 10%; left: 20%; }
+.glow2 { bottom: 10%; right: 20%; }
 
 /* CARD */
 .container {
-    background: rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.08);
     backdrop-filter: blur(15px);
     padding: 40px;
     border-radius: 25px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
     text-align: center;
     width: 300px;
+    z-index: 2;
 }
 
 /* TITLE */
@@ -43,6 +58,8 @@ input {
     outline: none;
     margin-top: 15px;
     text-align: center;
+    background: rgba(255,255,255,0.2);
+    color: white;
 }
 
 /* BUTTON */
@@ -64,22 +81,37 @@ button:hover {
     background: #ff1e4d;
 }
 
+/* HINT */
+.hint {
+    margin-top: 15px;
+    font-size: 13px;
+    color: #ffd6dc;
+    opacity: 0.8;
+}
+
 </style>
 </head>
 
 <body>
 
+<div class="glow glow1"></div>
+<div class="glow glow2"></div>
+
 <div class="container">
     <h1>Enter Password 💖</h1>
-    <input type="password" id="password" placeholder="Type here...">
+    <input type="password" id="password" placeholder="Type here... (DDMM)">
     <button onclick="checkPassword()">Unlock</button>
+
+    <div class="hint">
+        hint: it's your birthday 🎂
+    </div>
 </div>
 
 <script>
 function checkPassword() {
     let pass = document.getElementById("password").value;
 
-    if(pass === "1234") {
+    if(pass === "1204") {
         alert("Welcome baby 💖");
     } else {
         alert("Wrong password 😭");
