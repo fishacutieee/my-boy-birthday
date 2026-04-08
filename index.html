@@ -56,16 +56,20 @@ body {
     width: 100%;
     padding: 30px 20px;
     box-sizing: border-box;
+
     opacity: 0;
     transform: translateY(20px);
     transition: 0.4s ease;
+
+    pointer-events: none; /* 🔥 IMPORTANT */
 }
 
 .page.active {
     opacity: 1;
     transform: translateY(0);
-}
 
+    pointer-events: auto; /* 🔥 allow click */
+}
 /* CARD */
 .card {
     background: rgba(255,255,255,0.06);
