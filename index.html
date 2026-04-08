@@ -1,208 +1,212 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Birthday 💖</title>
+<title>For You 💖</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap" rel="stylesheet">
 
 <style>
-
 body {
     margin: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     font-family: 'Poppins', sans-serif;
     background: linear-gradient(135deg, #3b0a0a, #800020);
-    overflow: hidden;
+    overflow-x: hidden;
+    color: white;
 }
 
-/* FLOATING GLOW DECOR */
+/* PAGE SYSTEM */
+.page { display: none; }
+
+/* GLOW */
 .glow {
-    position: absolute;
+    position: fixed;
     width: 200px;
     height: 200px;
-    background: rgba(255, 100, 120, 0.3);
+    background: rgba(255, 80, 100, 0.3);
     border-radius: 50%;
-    filter: blur(80px);
+    filter: blur(90px);
 }
-
-.glow1 { top: 10%; left: 20%; }
-.glow2 { bottom: 10%; right: 20%; }
+.g1 { top: 10%; left: 10%; }
+.g2 { bottom: 10%; right: 10%; }
 
 /* CARD */
-.container {
-    background: rgba(255,255,255,0.08);
-    backdrop-filter: blur(15px);
-    padding: 40px;
-    border-radius: 25px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-    text-align: center;
-    width: 300px;
-    z-index: 2;
-}
-
-/* TITLE */
-h1 {
-    color: white;
-    font-weight: 500;
-}
-
-/* INPUT */
-input {
-    width: 100%;
-    padding: 12px;
-    border-radius: 15px;
-    border: none;
-    outline: none;
-    margin-top: 15px;
-    text-align: center;
-    background: rgba(255,255,255,0.2);
-    color: white;
-}
-
-/* BUTTON */
-button {
-    margin-top: 20px;
-    padding: 12px;
-    width: 100%;
-    border: none;
-    border-radius: 15px;
-    background: #ff4d6d;
-    color: white;
-    font-size: 15px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-button:hover {
-    transform: scale(1.05);
-    background: #ff1e4d;
-}
-
-/* HINT */
-.hint {
-    margin-top: 15px;
-    font-size: 13px;
-    color: #ffd6dc;
-    opacity: 0.8;
-}
-    /* PAGE SYSTEM */
-.page {
-    display: none;
-}
-
-/* HOME CARD */
-.home-card {
+.card {
     background: rgba(255,255,255,0.08);
     backdrop-filter: blur(20px);
     padding: 30px;
     border-radius: 25px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.6);
-    text-align: center;
     width: 320px;
-    margin: auto;
+    margin: 80px auto;
+    text-align: center;
 }
 
-/* GRID MENU */
+/* BUTTON */
+.btn {
+    background: linear-gradient(145deg, #8b0000, #ff1e4d);
+    padding: 12px;
+    border-radius: 15px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    margin-top: 10px;
+}
+.btn:hover { transform: scale(1.05); }
+
+/* GRID */
 .menu {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 15px;
-    margin-top: 20px;
 }
 
-/* BUTTON CARD */
 .card-btn {
     background: linear-gradient(145deg, #8b0000, #ff1e4d);
     border-radius: 20px;
     padding: 20px;
-    color: white;
     cursor: pointer;
-    transition: 0.3s;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
 }
-
 .card-btn:hover {
     transform: scale(1.08);
     box-shadow: 0 0 20px #ff4d6d;
 }
 
-.card-btn p {
-    margin-top: 8px;
-    font-size: 14px;
+/* IMAGE */
+.img-box {
+    border-radius: 20px;
+    padding: 5px;
+    margin: 10px;
+    background: white;
+}
+.img-box img {
+    width: 100%;
+    border-radius: 15px;
 }
 
+/* TICKET */
+.ticket {
+    border: 2px dashed white;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+.ticket:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+/* LETTER */
+.letter {
+    background: white;
+    color: black;
+    padding: 20px;
+    border-radius: 20px;
+}
 </style>
 </head>
 
 <body>
 
-<div class="glow glow1"></div>
-<div class="glow glow2"></div>
+<div class="glow g1"></div>
+<div class="glow g2"></div>
 
-<div class="container">
-    <h1>Enter Password 💖</h1>
-    <input type="password" id="password" placeholder="Type here... (DDMM)">
-    <button onclick="checkPassword()">Unlock</button>
-
-    <div class="hint">
-        hint: it's your birthday 🎂
-    </div>
+<!-- PASSWORD -->
+<div id="login" class="card">
+    <h2>Enter Password 💖</h2>
+    <input type="password" id="password" placeholder="Type here..." style="width:100%;padding:10px;border-radius:10px;border:none;">
+    <button class="btn" onclick="checkPassword()">Unlock</button>
+    <p style="font-size:12px;">hint: it's your birthday 🎂</p>
 </div>
 
-    <!-- HOME PAGE -->
-<div id="homePage" class="page">
+<!-- HOME -->
+<div id="home" class="page">
+<div class="card">
+<h2>Special For You 💖</h2>
 
-    <div class="home-card">
-        <h1>Special For You 💖</h1>
+<div class="menu">
+<div class="card-btn" onclick="go('gallery')">🕷️ Gallery</div>
+<div class="card-btn" onclick="go('song')">🎵 Song</div>
+<div class="card-btn" onclick="go('gift')">🎁 Gift</div>
+<div class="card-btn" onclick="go('secret')">💌 Secret</div>
+</div>
 
-        <div class="menu">
+</div>
+</div>
 
-            <div class="card-btn" onclick="goPage('galleryPage')">
-                🕷️
-                <p>Gallery</p>
-            </div>
+<!-- GALLERY -->
+<div id="gallery" class="page">
+<div class="card">
+<h2>Happy 21st Birthday 🎂</h2>
 
-            <div class="card-btn" onclick="goPage('songPage')">
-                🎵
-                <p>Song</p>
-            </div>
+<div class="img-box"><img src="img1.jpg"></div>
+<div class="img-box"><img src="img2.jpg"></div>
+<div class="img-box"><img src="img3.jpg"></div>
 
-            <div class="card-btn" onclick="goPage('giftPage')">
-                🎁
-                <p>Gift</p>
-            </div>
+<button class="btn" onclick="go('home')">Back</button>
+</div>
+</div>
 
-            <div class="card-btn" onclick="goPage('secretPage')">
-                💌
-                <p>Secret</p>
-            </div>
+<!-- SONG -->
+<div id="song" class="page">
+<div class="card">
+<h2>This is for you 🎵</h2>
 
-        </div>
-    </div>
+<iframe width="100%" height="200"
+src="https://www.youtube.com/embed/VIDEO_ID">
+</iframe>
 
+<button class="btn" onclick="go('home')">Back</button>
+</div>
+</div>
+
+<!-- GIFT -->
+<div id="gift" class="page">
+<div class="card">
+<h2>Birthday Gift Choices 🎁</h2>
+
+<div class="img-box">
+<img src="gift1.jpg">
+<p>Gift Name</p>
+<button class="btn" onclick="alert('Please tell FIFI ASAP 💖')">I want this</button>
+</div>
+
+<h3>Privileges 🎟️</h3>
+
+<div class="ticket" onclick="alert('TELL FIFI NOW 😏')">🎬 Movie Night</div>
+<div class="ticket" onclick="alert('TELL FIFI NOW 😏')">🎮 Game Marathon</div>
+
+<button class="btn" onclick="go('home')">Back</button>
+</div>
+</div>
+
+<!-- SECRET -->
+<div id="secret" class="page">
+<div class="card">
+<h2>Secret Message 💌</h2>
+
+<div class="letter">
+Happy Birthday sayang 💖<br><br>
+I love you always ❤️
+</div>
+
+<button class="btn" onclick="go('home')">Back</button>
+</div>
 </div>
 
 <script>
-function goPage(pageId) {
-    document.querySelectorAll('.page').forEach(p => p.style.display = 'none');
-    document.getElementById(pageId).style.display = 'block';
+function checkPassword(){
+let pass = document.getElementById("password").value;
+if(pass==="1234"){
+alert("Welcome 💖");
+document.getElementById("login").style.display="none";
+document.getElementById("home").style.display="block";
+}else{
+alert("Wrong password 😭");
+}
 }
 
-function checkPassword() {
-    let pass = document.getElementById("password").value;
-
-    if(pass === "1234") {
-        alert("Welcome baby 💖");
-
-        document.querySelector(".container").style.display = "none";
-        document.getElementById("homePage").style.display = "block";
-
-    } else {
-        alert("Wrong password 😭");
-    }
+function go(page){
+document.querySelectorAll('.page').forEach(p=>p.style.display="none");
+document.getElementById(page).style.display="block";
 }
 </script>
 
