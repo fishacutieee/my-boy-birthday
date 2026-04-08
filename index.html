@@ -1,183 +1,89 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday Iyad 🕷️❤️</title>
+<title>Birthday 💖</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap" rel="stylesheet">
 
 <style>
+
 body {
     margin: 0;
-    text-align: center;
-    font-family: 'Comic Sans MS', cursive;
-    background: linear-gradient(45deg, #0f2027, #203a43, #2c5364);
-    color: white;
-    overflow-x: hidden;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #ffdde1, #ee9ca7);
 }
 
-/* Spider theme glow */
-h1 {
-    color: red;
-    text-shadow: 0 0 10px red, 0 0 20px crimson;
-}
-
+/* CARD */
 .container {
-    padding: 30px;
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(15px);
+    padding: 40px;
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    text-align: center;
+    width: 300px;
 }
 
-/* Buttons */
-button {
-    padding: 12px 20px;
-    font-size: 18px;
-    border: none;
-    border-radius: 20px;
-    background: red;
+/* TITLE */
+h1 {
     color: white;
-    cursor: pointer;
+    font-weight: 500;
+}
+
+/* INPUT */
+input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 15px;
+    border: none;
+    outline: none;
     margin-top: 15px;
-    box-shadow: 0 0 10px red;
+    text-align: center;
+}
+
+/* BUTTON */
+button {
+    margin-top: 20px;
+    padding: 12px;
+    width: 100%;
+    border: none;
+    border-radius: 15px;
+    background: #ff4d6d;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
 button:hover {
     transform: scale(1.05);
+    background: #ff1e4d;
 }
 
-/* Input */
-input {
-    padding: 10px;
-    border-radius: 10px;
-    border: none;
-    text-align: center;
-}
-
-/* Hide main */
-#mainContent {
-    display: none;
-}
-
-/* Spider webs animation */
-.web {
-    position: fixed;
-    width: 50px;
-    top: -50px;
-    animation: fall 6s linear infinite;
-}
-
-@keyframes fall {
-    to {
-        transform: translateY(110vh);
-    }
-}
-
-/* Hearts */
-.heart {
-    position: absolute;
-    font-size: 20px;
-    animation: floatUp 3s linear forwards;
-}
-
-@keyframes floatUp {
-    0% {transform: translateY(0); opacity: 1;}
-    100% {transform: translateY(-200px); opacity: 0;}
-}
-
-/* Image */
-img {
-    width: 250px;
-    border-radius: 20px;
-    margin-top: 20px;
-    box-shadow: 0 0 20px red;
-}
 </style>
 </head>
 
 <body>
 
-<!-- LOGIN -->
-<div class="container" id="login">
-    <h2>🕷️ Private For My Spider-Man 🕷️</h2>
-    <p>Enter your birthday to unlock 💌</p>
-    <input type="password" id="password" placeholder="DDMMYYYY">
-    <br>
-    <button onclick="checkPassword()">Unlock ❤️</button>
-</div>
-
-<!-- MAIN -->
-<div class="container" id="mainContent">
-
-    <h1>Happy Birthday Iyad 🕷️❤️</h1>
-    <p>You’re my one and only Spider-Man 🕸️</p>
-
-    <button onclick="showSurprise()">Click Me Sayang 😚</button>
-
-    <div id="surprise" style="display:none;">
-        <p>
-        Thank you sebab jadi hero I 🕷️<br>
-        Selalu jaga I walaupun degil 😤<br><br>
-        I love you more than everything 💖<br>
-        Stay mine forever okay? 🥺❤️
-        </p>
-
-        <img src="us.jpg" alt="Us">
-
-        <br>
-
-        <button onclick="playMusic()">Play Our Song 🎵</button>
-
-        <div id="music" style="display:none; margin-top:20px;">
-            <iframe width="300" height="170"
-            src="https://www.youtube.com/embed?listType=search&list=romantic+love+song"
-            frameborder="0" allow="autoplay"></iframe>
-        </div>
-    </div>
+<div class="container">
+    <h1>Enter Password 💖</h1>
+    <input type="password" id="password" placeholder="Type here...">
+    <button onclick="checkPassword()">Unlock</button>
 </div>
 
 <script>
-const correctPassword = "12042005";
-
 function checkPassword() {
-    const input = document.getElementById("password").value;
-    if(input === correctPassword) {
-        document.getElementById("login").style.display = "none";
-        document.getElementById("mainContent").style.display = "block";
-        createWebs();
+    let pass = document.getElementById("password").value;
+
+    if(pass === "1234") {
+        alert("Welcome baby 💖");
     } else {
-        alert("Wrong password 😤 try again!");
+        alert("Wrong password 😭");
     }
-}
-
-function showSurprise() {
-    document.getElementById("surprise").style.display = "block";
-    createHearts();
-}
-
-function createHearts() {
-    for(let i=0; i<15; i++) {
-        let heart = document.createElement("div");
-        heart.className = "heart";
-        heart.innerHTML = "❤️";
-        heart.style.left = Math.random() * 100 + "%";
-        heart.style.top = "80%";
-        document.body.appendChild(heart);
-
-        setTimeout(() => heart.remove(), 3000);
-    }
-}
-
-/* Spider webs falling */
-function createWebs() {
-    setInterval(() => {
-        let web = document.createElement("div");
-        web.className = "web";
-        web.innerHTML = "🕸️";
-        web.style.left = Math.random() * 100 + "%";
-        document.body.appendChild(web);
-
-        setTimeout(() => web.remove(), 6000);
-    }, 500);
-}
-
-function playMusic() {
-    document.getElementById("music").style.display = "block";
 }
 </script>
 
