@@ -129,7 +129,6 @@ body {
     transform: translateY(0);
     pointer-events: auto;
 }
-}
 
 .page.active {
     opacity: 1;
@@ -282,7 +281,61 @@ iframe {
     border-radius: 15px;
     border: none;
 }
-    
+
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background: white;
+    padding: 20px;
+    border-radius: 20px;
+    text-align: center;
+    width: 250px;
+}
+
+.popup-content img {
+    width: 100%;
+    border-radius: 15px;
+}
+
+.popup-content p {
+    color: black;
+    margin: 10px 0;
+}
+
+.gift-box {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.gift-box img {
+    width: 100%;
+    border-radius: 20px;
+    border: 6px solid white; /* 🔥 WHITE BORDER */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+.ticket {
+    margin-top: 15px;
+    padding: 15px;
+    border-radius: 15px;
+    border: 2px dashed white;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.ticket:hover {
+    background: rgba(255,255,255,0.1);
+}
 </style>
 </head>
 
@@ -327,8 +380,6 @@ iframe {
 <button class="btn" onclick="toggleMusic()">Pause / Play Music</button>
 </div>
 </div>
-</div>
-</div>
 
 <!-- GALLERY -->
 <div id="gallery" class="page">
@@ -344,15 +395,21 @@ iframe {
 </div>
 
 <div class="polaroid">
-<img src="img2.jpeg">
+<img src="img3.jpeg">
 <p>memory</p>
 </div>
 
 <div class="polaroid">
-<img src="img3.jpeg">
+<img src="img4.jpeg">
 <p>cute moment</p>
 </div>
 
+<div class="polaroid">
+<img src="img6.jpeg">
+<p>ma boy</p>
+</div>
+
+    
 </div>
 
 <div class="back" onclick="go('home')">← back</div>
@@ -369,12 +426,12 @@ iframe {
 
 <div class="video-box">
 <p class="video-title">our song 💖</p>
-<iframe src="https://www.youtube.com/embed/lY5V4hSLWY8&list=RDlY5V4hSLWY8&start_radio=1"></iframe>
+<iframe src="https://www.youtube.com/embed/lY5V4hSLWY8"></iframe>
 </div>
 
 <div class="video-box">
-<p class="video-title">another memory 🎵</p>
-<iframe src="https://www.youtube.com/embed/LMIS2PMqCL0&list=RDLMIS2PMqCL0&start_radio=1"></iframe>
+<p class="video-title">another one for you 🎵</p>
+<iframe src="https://www.youtube.com/embed/LMIS2PMqCL0"></iframe>
 </div>
 
 <div class="back" onclick="go('home')">← back</div>
@@ -387,12 +444,34 @@ iframe {
 <!-- GIFT -->
 <div id="gift" class="page">
 <div class="card">
+
 <h1>Birthday Gift Choices</h1>
 
-<img src="gift1.jpg" class="img">
-<button class="btn" onclick="alert('Tell FIFI ASAP 💖')">I want this</button>
-<div class="footer">by fificute 💖</div>
+<div class="gift-box">
+<img src="https://medias.watsons.com.my/publishing/WTCMY-54833-side-zoom.jpg?version=1748483479">
+<p>Special Gift 🎁</p>
+<button class="btn" onclick="showPopup('gift1.jpg','Please tell FIFI ASAP 💖')">
+I want this
+</button>
+</div>
+
+<h3 style="margin-top:20px;">Privileges 🎟️</h3>
+
+<div class="ticket" onclick="showPopup('us.jpeg','TELL FIFI NOW 😏')">
+🎬 Movie Night
+</div>
+
+<div class="ticket" onclick="showPopup('us.jpeg','TELL FIFI NOW 😏')">
+🎮 Game Marathon
+</div>
+
+<div class="ticket" onclick="showPopup('us.jpeg','TELL FIFI NOW 😏')">
+🍔 Food Date
+</div>
+
 <div class="back" onclick="go('home')">← back</div>
+<div class="footer">by fificute 💖</div>
+
 </div>
 </div>
 
@@ -402,8 +481,8 @@ iframe {
 <h1>Secret Message</h1>
 
 <div class="letter">
-Happy Birthday ❤️<br><br>
-I love you always.
+Happy Birthday Iyad❤️<br><br>
+hsuhhsgvsgh.
 </div>
 <div class="footer">by fificute 💖</div>
 <div class="back" onclick="go('home')">← back</div>
@@ -417,17 +496,15 @@ function check(){
 let p = document.getElementById("password").value;
 
 if(p === "1234"){
-go('home');
-playMusic();
-/* CONFETTI BURST */
-confetti({
-    particleCount: 120,
-    spread: 80,
-    origin: { y: 0.6 }
-});
+    showPopup("us.jpeg", "Welcome baby 💖");
+
+    setTimeout(()=>{
+        closePopup();
+        go('home');
+    }, 2000);
 
 }else{
-alert("Wrong password 😭");
+    showPopup("img1.jpeg", "Wrong password 😭");
 }
 }
 
@@ -445,7 +522,25 @@ if(m.paused){
     m.pause();
 }
 }
+
+    function showPopup(img, text){
+    document.getElementById("popup").style.display = "flex";
+    document.getElementById("popupImg").src = img;
+    document.getElementById("popupText").innerText = text;
+}
+
+function closePopup(){
+    document.getElementById("popup").style.display = "none";
+}
+
 </script>
+<div id="popup" class="popup">
+  <div class="popup-content">
+    <img id="popupImg">
+    <p id="popupText"></p>
+    <button onclick="closePopup()">OK</button>
+  </div>
+</div>
 
 </body>
 </html>
