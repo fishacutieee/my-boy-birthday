@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Iyad 💖</title>
+
+<style>
+body {
+    margin: 0;
+    text-align: center;
+    font-family: 'Comic Sans MS', cursive;
+    background: linear-gradient(45deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
+    background-size: 400% 400%;
+    animation: gradientBG 10s ease infinite;
+    color: white;
+}
+
+@keyframes gradientBG {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+.container {
+    padding: 30px;
+}
+
+button {
+    padding: 12px 20px;
+    font-size: 18px;
+    border: none;
+    border-radius: 20px;
+    background: white;
+    color: hotpink;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+input {
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    text-align: center;
+}
+
+#mainContent {
+    display: none;
+}
+
+#kisses {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    pointer-events: none;
+}
+
+.kiss {
+    position: absolute;
+    font-size: 25px;
+    animation: floatUp 3s linear forwards;
+}
+
+@keyframes floatUp {
+    0% {transform: translateY(0); opacity: 1;}
+    100% {transform: translateY(-200px); opacity: 0;}
+}
+
+img {
+    width: 250px;
+    border-radius: 20px;
+    margin-top: 20px;
+    box-shadow: 0 0 20px white;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container" id="login">
+    <h2>🕷️ Private For Iyad Only 🕷️</h2>
+    <p>Enter your birthday to unlock 💌</p>
+    <input type="password" id="password" placeholder="DDMMYYYY">
+    <br>
+    <button onclick="checkPassword()">Unlock 💖</button>
+</div>
+
+<div class="container" id="mainContent">
+
+    <h1>Happy Birthday Iyad 🎂💋</h1>
+    <p>You’re my favourite Spiderman 🕷️</p>
+
+    <button onclick="showSurprise()">Tap Me Sayang 😚</button>
+
+    <div id="surprise" style="display:none;">
+        <p>
+        Thank you sebab jadi hero I 🕸️<br>
+        Walaupun kadang-kadang annoying 🙄<br><br>
+        I love you more than your PlayStation 😤💘<br>
+        Stay handsome and stay mine okay 💖
+        </p>
+
+        <img src="us.jpg" alt="Us">
+
+        <br>
+
+        <button onclick="playMusic()">Play Our Songs 🎵</button>
+
+        <div id="music" style="display:none; margin-top:20px;">
+            <iframe width="300" height="170"
+            src="https://www.youtube.com/embed?listType=search&list=Kidsteph+Frankenstein+Goatt"
+            frameborder="0" allow="autoplay"></iframe>
+
+            <br><br>
+
+            <iframe width="300" height="170"
+            src="https://www.youtube.com/embed?listType=search&list=Indahkus+Malu+Malu"
+            frameborder="0" allow="autoplay"></iframe>
+        </div>
+    </div>
+</div>
+
+<div id="kisses"></div>
+
+<script>
+const correctPassword = "PUT_BIRTHDAY_HERE"; // contoh: 12082003
+
+function checkPassword() {
+    const input = document.getElementById("password").value;
+    if(input === correctPassword) {
+        document.getElementById("login").style.display = "none";
+        document.getElementById("mainContent").style.display = "block";
+    } else {
+        alert("Wrong password sayang 😤 Try again.");
+    }
+}
+
+function showSurprise() {
+    document.getElementById("surprise").style.display = "block";
+    createKisses();
+}
+
+function createKisses() {
+    for(let i=0; i<15; i++) {
+        let kiss = document.createElement("div");
+        kiss.className = "kiss";
+        kiss.innerHTML = "💋";
+        kiss.style.left = Math.random() * 100 + "%";
+        kiss.style.top = "80%";
+        document.getElementById("kisses").appendChild(kiss);
+
+        setTimeout(() => {
+            kiss.remove();
+        }, 3000);
+    }
+}
+
+function playMusic() {
+    document.getElementById("music").style.display = "block";
+}
+</script>
+
+</body>
+</html>
