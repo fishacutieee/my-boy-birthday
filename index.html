@@ -3,11 +3,68 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>For You 💖</title>
+<title>Speacial For You 💖</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Quicksand:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
+/* TITLE */
+h1 {
+    font-family: 'Playfair Display', serif;
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 5px;
+}
+
+/* SUBTEXT */
+.subtitle {
+    text-align: center;
+    font-family: 'Quicksand', sans-serif;
+    opacity: 0.7;
+}
+
+/* CENTER PAGE PROPERLY */
+.page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* HOME HEADER */
+.top-header {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.top-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+}
+
+/* SPIDERMAN FLOAT */
+.spiderman {
+    position: absolute;
+    font-size: 22px;
+    animation: float 3s infinite ease-in-out;
+}
+
+.spiderman.one { top: 30px; left: 20px; }
+.spiderman.two { top: 50px; right: 20px; }
+
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+}
+
+/* FOOTER */
+.footer {
+    text-align: center;
+    font-size: 12px;
+    opacity: 0.5;
+    margin-top: 20px;
+}
 
 /* ===== GLOBAL ===== */
 body {
@@ -188,16 +245,27 @@ input {
 
 <!-- HOME -->
 <div id="home" class="page">
-<div class="card">
-<h1>Special For You</h1>
 
-<div class="menu">
-<div class="menu-item" onclick="go('gallery')">🕷️ Gallery</div>
-<div class="menu-item" onclick="go('song')">🎵 Song</div>
-<div class="menu-item" onclick="go('gift')">🎁 Gift</div>
-<div class="menu-item" onclick="go('secret')">💌 Secret</div>
+<div class="spiderman one">🕷️</div>
+<div class="spiderman two">🕸️</div>
+
+<div class="card">
+
+<div class="top-header">
+<h2>Happy Birthday 🎂</h2>
+<p class="subtitle">Special For You</p>
 </div>
 
+<div class="menu">
+<div class="menu-item" onclick="go('gallery')">Gallery</div>
+<div class="menu-item" onclick="go('song')">Song</div>
+<div class="menu-item" onclick="go('gift')">Gift</div>
+<div class="menu-item" onclick="go('secret')">Secret</div>
+</div>
+
+<div class="footer">by fificute 💖</div>
+
+</div>
 </div>
 </div>
 
@@ -209,6 +277,7 @@ input {
 <img src="img1.jpg" class="img">
 <img src="img2.jpg" class="img">
 
+    <div class="footer">by fificute 💖</div>
 <div class="back" onclick="go('home')">← back</div>
 </div>
 </div>
@@ -221,7 +290,7 @@ input {
 <iframe width="100%" height="200"
 src="https://www.youtube.com/embed/VIDEO_ID">
 </iframe>
-
+<div class="footer">by fificute 💖</div>
 <div class="back" onclick="go('home')">← back</div>
 </div>
 </div>
@@ -233,7 +302,7 @@ src="https://www.youtube.com/embed/VIDEO_ID">
 
 <img src="gift1.jpg" class="img">
 <button class="btn" onclick="alert('Tell FIFI ASAP 💖')">I want this</button>
-
+<div class="footer">by fificute 💖</div>
 <div class="back" onclick="go('home')">← back</div>
 </div>
 </div>
@@ -247,7 +316,7 @@ src="https://www.youtube.com/embed/VIDEO_ID">
 Happy Birthday ❤️<br><br>
 I love you always.
 </div>
-
+<div class="footer">by fificute 💖</div>
 <div class="back" onclick="go('home')">← back</div>
 </div>
 </div>
@@ -258,7 +327,7 @@ I love you always.
 function check(){
 let p = document.getElementById("password").value;
 
-if(p === "1234"){
+if(p === "1204"){
 alert("Welcome 💖");
 go('home');
 }else{
