@@ -80,7 +80,8 @@ body {
     margin: auto;
     min-height: 100vh;
     position: relative;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto; /* ✅ allow scroll */
 }
 
 /* BACKGROUND LAYERS */
@@ -336,6 +337,41 @@ iframe {
 .ticket:hover {
     background: rgba(255,255,255,0.1);
 }
+
+    .gift-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.gift-item {
+    text-align: center;
+}
+
+.gift-item img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 15px;
+    border: 5px solid white;
+}
+
+.gift-item p {
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.gift-item button {
+    margin-top: 5px;
+    padding: 8px;
+    width: 100%;
+    border-radius: 10px;
+    border: none;
+    background: #ff2e63;
+    color: white;
+    font-size: 12px;
+}
 </style>
 </head>
 
@@ -447,27 +483,39 @@ iframe {
 
 <h1>Birthday Gift Choices</h1>
 
-<div class="gift-box">
-<img src="https://medias.watsons.com.my/publishing/WTCMY-54833-side-zoom.jpg?version=1748483479">
-<p>Special Gift 🎁</p>
-<button class="btn" onclick="showPopup('gift1.jpg','Please tell FIFI ASAP 💖')">
-I want this
-</button>
+<div class="gift-grid">
+
+<div class="gift-item">
+<img src="gift1.jpg">
+<p>Candy 🎁</p>
+<button onclick="showPopup('https://medias.watsons.com.my/publishing/WTCMY-54833-side-zoom.jpg?version=1748483479','Tell FIFI ASAP 💖')">I want this</button>
+</div>
+
+<div class="gift-item">
+<img src="gift2.jpg">
+<p>Keychain 💝</p>
+<button onclick="showPopup('https://i.etsystatic.com/64596436/r/il/9ef21c/7777757715/il_300x300.7777757715_nxve.jpg','Tell FIFI ASAP 💖')">I want this</button>
+</div>
+
+<div class="gift-item">
+<img src="gift3.jpg">
+<p>Bento Cake 🎀</p>
+<button onclick="showPopup('https://creamone.com/wp-content/uploads/2024/05/bento-spiderman-cake.png','Tell FIFI ASAP 💖')">I want this</button>
+</div>
+
+<div class="gift-item">
+<img src="gift4.jpg">
+<p>Skin ML 💌</p>
+<button onclick="showPopup('https://thumb.viva.id/vivadigital/1265x711/2025/06/12/684a81c4b9609-kumpulan-skin-epic-di-mobile-legends_digital.jpg','Tell FIFI ASAP 💖')">I want this</button>
+</div>
+
 </div>
 
 <h3 style="margin-top:20px;">Privileges 🎟️</h3>
 
-<div class="ticket" onclick="showPopup('us.jpeg','TELL FIFI NOW 😏')">
-🎬 Movie Night
-</div>
-
-<div class="ticket" onclick="showPopup('us.jpeg','TELL FIFI NOW 😏')">
-🎮 Game Marathon
-</div>
-
-<div class="ticket" onclick="showPopup('us.jpeg','TELL FIFI NOW 😏')">
-🍔 Food Date
-</div>
+<div class="ticket" onclick="showPopup('us.jpeg','TELL FIFI NOW 😏')">🎬 Movie Night</div>
+<div class="ticket" onclick="showPopup('us.jpeg','TELL FIFI NOW 😏')">🎮 Game Marathon</div>
+<div class="ticket" onclick="showPopup('us.jpeg','TELL FIFI NOW 😏')">🍔 Food Date</div>
 
 <div class="back" onclick="go('home')">← back</div>
 <div class="footer">by fificute 💖</div>
@@ -482,7 +530,7 @@ I want this
 
 <div class="letter">
 Happy Birthday Iyad❤️<br><br>
-hsuhhsgvsgh.
+Semoga rezeki.
 </div>
 <div class="footer">by fificute 💖</div>
 <div class="back" onclick="go('home')">← back</div>
@@ -496,7 +544,7 @@ function check(){
 let p = document.getElementById("password").value;
 
 if(p === "1234"){
-    showPopup("us.jpeg", "Welcome baby 💖");
+    showPopup("img7.jpeg", "Welcome baby 💖 Have fun! ");
 
     setTimeout(()=>{
         closePopup();
@@ -504,7 +552,7 @@ if(p === "1234"){
     }, 2000);
 
 }else{
-    showPopup("img1.jpeg", "Wrong password 😭");
+    showPopup("img8.jpeg", "Wrong password 😭 Betul betul lah iyad! ");
 }
 }
 
