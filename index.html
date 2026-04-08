@@ -215,6 +215,37 @@ input {
     cursor: pointer;
 }
 
+.gallery-scroll {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.polaroid {
+    background: white;
+    padding: 10px;
+    border-radius: 15px;
+    transform: rotate(-2deg);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+
+.polaroid:nth-child(even){
+    transform: rotate(2deg);
+}
+
+.polaroid img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.polaroid p {
+    color: black;
+    font-size: 13px;
+    margin-top: 5px;
+    text-align: center;
+}
+
 /* LETTER */
 .letter {
     background: #fff;
@@ -228,7 +259,9 @@ input {
 </head>
 
 <body>
-
+<audio id="bgMusic" loop>
+  <source src="song.mp3" type="audio/mpeg">
+</audio>
 <div class="app bg">
 
 <!-- PASSWORD -->
@@ -245,7 +278,7 @@ input {
 
 <!-- HOME -->
 <div id="home" class="page">
-
+<button class="btn" onclick="document.getElementById('bgMusic').pause()">Pause Music</button>
 <div class="spiderman one">🕷️</div>
 <div class="spiderman two">🕸️</div>
 
@@ -272,13 +305,31 @@ input {
 <!-- GALLERY -->
 <div id="gallery" class="page">
 <div class="card">
+
 <h1>Happy 21st Birthday</h1>
 
-<img src="img1.jpg" class="img">
-<img src="img2.jpg" class="img">
+<div class="gallery-scroll">
 
-    <div class="footer">by fificute 💖</div>
+<div class="polaroid">
+<img src="img1.jpg">
+<p>us 💖</p>
+</div>
+
+<div class="polaroid">
+<img src="img2.jpg">
+<p>memory</p>
+</div>
+
+<div class="polaroid">
+<img src="img3.jpg">
+<p>cute moment</p>
+</div>
+
+</div>
+
 <div class="back" onclick="go('home')">← back</div>
+<div class="footer">by fificute 💖</div>
+
 </div>
 </div>
 
@@ -327,9 +378,16 @@ I love you always.
 function check(){
 let p = document.getElementById("password").value;
 
-if(p === "1204"){
-alert("Welcome 💖");
+if(p === "1234"){
 go('home');
+playMusic();
+/* CONFETTI BURST */
+confetti({
+    particleCount: 120,
+    spread: 80,
+    origin: { y: 0.6 }
+});
+
 }else{
 alert("Wrong password 😭");
 }
@@ -338,6 +396,11 @@ alert("Wrong password 😭");
 function go(id){
 document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
 document.getElementById(id).classList.add('active');
+}
+
+function playMusic(){
+    let music = document.getElementById("bgMusic");
+    music.play().catch(()=>{});
 }
 </script>
 
